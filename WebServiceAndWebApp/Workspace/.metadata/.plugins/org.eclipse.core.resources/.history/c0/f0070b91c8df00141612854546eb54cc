@@ -1,0 +1,75 @@
+package ec.org.cropestalert.entities;
+
+import java.io.Serializable;
+
+import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import java.util.List;
+
+
+/**
+ * The persistent class for the pesticide database table.
+ * 
+ */
+@XmlRootElement
+@Entity
+@NamedQuery(name="Pesticide.findAll", query="SELECT p FROM Pesticide p")
+public class Pesticide implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_pesticide")
+	private int idPesticide;
+
+	@Lob
+	@Column(name="pesticide_name")
+	private String pesticideName;
+
+	//bi-directional many-to-one association to PestHasPesticide
+	@OneToMany(mappedBy="pesticide")
+	private List<PestHasPesticide> pestHasPesticides;
+
+	public Pesticide() {
+	}
+
+	public int getIdPesticide() {
+		return this.idPesticide;
+	}
+
+	public void setIdPesticide(int idPesticide) {
+		this.idPesticide = idPesticide;
+	}
+
+	public String getPesticideName() {
+		return this.pesticideName;
+	}
+
+	public void setPesticideName(String pesticideName) {
+		this.pesticideName = pesticideName;
+	}
+
+	public List<PestHasPesticide> getPestHasPesticides() {
+		return this.pestHasPesticides;
+	}
+
+	public void setPestHasPesticides(List<PestHasPesticide> pestHasPesticides) {
+		this.pestHasPesticides = pestHasPesticides;
+	}
+
+	public PestHasPesticide addPestHasPesticide(PestHasPesticide pestHasPesticide) {
+		getPestHasPesticides().add(pestHasPesticide);
+		pestHasPesticide.setPesticide(this);
+
+		return pestHasPesticide;
+	}
+
+	public PestHasPesticide removePestHasPesticide(PestHasPesticide pestHasPesticide) {
+		getPestHasPesticides().remove(pestHasPesticide);
+		pestHasPesticide.setPesticide(null);
+
+		return pestHasPesticide;
+	}
+
+}

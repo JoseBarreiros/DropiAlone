@@ -1,0 +1,12 @@
+package ec.org.cropestalert.services;
+
+import ec.org.cropestalert.entities.Photo;
+
+public class PhotoService extends Generic<Photo> {
+
+	public PhotoService(Class<Photo> tipoBean, Class<?> tipoServicio) {
+		super(tipoBean, tipoServicio);
+		// TODO Auto-generated constructor stub
+	}
+
+}

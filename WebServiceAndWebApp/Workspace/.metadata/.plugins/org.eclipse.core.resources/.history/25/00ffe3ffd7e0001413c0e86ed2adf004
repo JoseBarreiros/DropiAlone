@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+<ui:composition template="/templates/templateProDual.xhtml">
+	<ui:define name="tituloPagina">AgileScrum</ui:define>
+	<ui:define name="menuPagina">
+		<h:form style="padding: 3px;">
+
+			<h:commandLink rendered="#{dataManagerSesion.administrador}"
+				styleClass="more" action="CrearUsuario.jsf" process="@this"
+				immediate="true">
+							Gestión de Usuarios							
+						</h:commandLink>
+
+			<h:commandLink rendered="#{dataManagerSesion.administrador}"
+				styleClass="more" action="CrearProyecto.jsf" process="@this"
+				immediate="true">
+							Gestión de Proyectos							
+						</h:commandLink>
+
+			<h:commandLink rendered="#{dataManagerSesion.scrumMaster}"
+				styleClass="more" action="ScrumMaster.jsf" process="@this"
+				immediate="true">
+							Scrum Master - Administración							
+						</h:commandLink>
+
+
+			<h:commandLink rendered="#{dataManagerSesion.scrumTeam}"
+				styleClass="more" action="ScrumTeam.jsf" process="@this"
+				immediate="true">
+							Scrum Team - Administración							
+			</h:commandLink>
+
+			<h:commandLink rendered="#{dataManagerSesion.productOwner}"
+				styleClass="more" action="ProductOwner.jsf" process="@this"
+				immediate="true">
+							Product Owner - Product Backlog				
+			</h:commandLink>
+		</h:form>
+	</ui:define>
+	<ui:define name="contenido">
+		<h:form id="formPrincipal" rendered="#{controladorBienvenida.control}">
+			<pe:ajaxErrorHandler button="Volver a Ingresar!"
+				widgetVar="myAjaxErrorHandler" title="Error: "
+				body="Lo sentimos su sesión ha caducado o ha experimentado algún error, porfavor ingrese nuevamente" />
+			<p:growl autoUpdate="true" showDetail="false" />
+			<h:outputText
+				value="Bienvenid@ #{dataManagerSesion.usuarioSesion.persona.nombrePersona} #{dataManagerSesion.usuarioSesion.persona.apellidoPersona}"
+				style="font-weight: bolder;font-size: 1.8em;" />
+			<p:separator />
+			<h:panelGroup rendered="#{dataManagerSesion.administrador}"
+				style="text-align:justify !important; font-size: 1.5em;">
+				<p>
+					Has ingresado con el Rol de <strong>Administrador del
+						Sistema</strong>.
+				</p>
+				<p>
+					Con este rol tu puedes crear nuevos usuarios y editar los ya
+					existentes en el sistema, ingresando los datos que se solicitan y
+					asigandoles los roles necesarios, mediante los cuales tendrán
+					acceso a las diferentes opciones de <cite><b>AgileScrum</b></cite>.
+				</p>
+				<p>
+					También puedes crear y editar los proyectos que se llevarán a cabo
+					usando la metodología ágil conocida como <strong>Scrum</strong> y
+					asiganar los diferentes actores que estarán involucrados en la
+					ejecución de dicho proyecto.
+				</p>
+
+			</h:panelGroup>
+
+			<h:panelGroup rendered="#{dataManagerSesion.scrumMaster}"
+				style="text-align:justify !important; font-size: 1.5em;">
+				<p>
+					Has ingresado con el Rol de <strong>Scrum Master</strong>.
+				</p>
+				<p>Con este rol tu puedes crear tareas en función de los
+					requerimientos del proyecto, administrarlas, ponderarlas y
+					asiganarlas a los usuarios con el rol de Scrum Team, tambien podras
+					revisar el avance de estas tareas y estableces los Sprints en los
+					cuales se van a llevar a cabo y su duración.</p>
+
+			</h:panelGroup>
+
+			<h:panelGroup rendered="#{dataManagerSesion.productOwner}"
+				style="text-align:justify !important; font-size: 1.5em;">
+				<p>
+					Has ingresado con el Rol de <strong>Product Owner</strong>.
+				</p>
+				<p>Con este rol tu puedes crear requerimientos en función de las
+					necesidades del proyecto, ademas se puede subir un archivos adjunto
+					a cada requerimiento.</p>
+
+			</h:panelGroup>
+
+			<h2>Opciones:</h2>
+			<h:commandLink rendered="#{dataManagerSesion.administrador}"
+				styleClass="more2" action="CrearUsuario.jsf" process="@this"
+				immediate="true">
+				<h:panelGrid columns="2">
+					<img src="#{request.contextPath}/imagenes/userlogin.png"
+						alt="Nombre" style="width: 30px; margin: 2px;" />
+					<h:outputText value="Gestión de Usuarios" />
+				</h:panelGrid>
+			</h:commandLink>
+
+			<h:commandLink rendered="#{dataManagerSesion.administrador}"
+				styleClass="more2" action="CrearProyecto.jsf" process="@this"
+				immediate="true">
+				<h:panelGrid columns="2">
+					<img src="#{request.contextPath}/imagenes/build.png"
+						alt="Gestión de Proyectos" style="width: 30px; margin: 2px;" />
+					<h:outputText value="Gestión de Proyectos" />
+				</h:panelGrid>
+			</h:commandLink>
+
+			<h:commandLink rendered="#{dataManagerSesion.scrumMaster}"
+				styleClass="more2" action="ScrumMaster.jsf" process="@this"
+				immediate="true">
+				<h:panelGrid columns="2">
+					<img src="#{request.contextPath}/imagenes/build.png"
+						alt="Scrum Master - Administración"
+						style="width: 30px; margin: 2px;" />
+					<h:outputText value="Scrum Master - Administración" />
+				</h:panelGrid>
+
+			</h:commandLink>
+
+
+			<h:commandLink rendered="#{dataManagerSesion.scrumTeam}"
+				styleClass="more2" action="ScrumTeam.jsf" process="@this"
+				immediate="true">
+				<h:panelGrid columns="2">
+					<img src="#{request.contextPath}/imagenes/build.png"
+						alt="Scrum Team - Administración"
+						style="width: 30px; margin: 2px;" />
+					<h:outputText value="Scrum Team - Administración" />
+				</h:panelGrid>
+			</h:commandLink>
+
+			<h:commandLink rendered="#{dataManagerSesion.productOwner}"
+				styleClass="more2" action="ProductOwner.jsf" process="@this"
+				immediate="true">
+				<h:panelGrid columns="2">
+					<img src="#{request.contextPath}/imagenes/build.png"
+						alt="Product Owner - Product Backlog"
+						style="width: 30px; margin: 2px;" />
+					<h:outputText value="Product Owner - Product Backlog" />
+				</h:panelGrid>
+			</h:commandLink>
+
+			<p:commandLink styleClass="more2" process="@this"
+				update="@form:pngContrasenia1 @form:pngContrasenia2"
+				action="#{controladorBienvenida.abrirCambiarContrasenia()}"
+				oncomplete="PF('dlgCambiarContrasena').show();">
+				<h:panelGrid columns="2">
+					<img src="#{request.contextPath}/imagenes/passlogin.png"
+						alt="Cambiar Contraseña" style="width: 30px; margin: 2px;" />
+					<h:outputText value="Cambiar Contraseña" />
+				</h:panelGrid>
+			</p:commandLink>
+
+			<p:dialog widgetVar="dlgCambiarContrasena" showEffect="fade"
+				modal="true" header="Cambio de Contraseña" resizable="false">
+
+				<h:panelGrid columns="3" id="pngContrasenia1">
+					<img src="#{request.contextPath}/imagenes/passlogin.png"
+						alt="Cambiar Contraseña" style="width: 17px; margin: 1px;" />
+					<h:outputText value="Contraseña Actual:"
+						style="FONT-WEIGHT: bold;width:140px;" />
+					<p:password required="true"
+						requiredMessage="Contraseña Actual Requerida"
+						value="#{controladorBienvenida.contraseniaAnterior}" />
+				</h:panelGrid>
+				<p:separator />
+				<h:panelGrid columns="2" id="pngContrasenia2">
+					<h:outputText value="Nueva Contraseña:"
+						style="FONT-WEIGHT: bold;width:140px;" />
+					<p:password required="true"
+						requiredMessage="Nueva Contraseña Requerida"
+						value="#{controladorBienvenida.contrasenia}" feedback="true"
+						promptLabel="Por favor Ingrese la contraseña" weakLabel="Débil"
+						goodLabel="Buena" strongLabel="Fuerte" />
+
+					<h:outputText value="Confirmar Contraseña:"
+						style="FONT-WEIGHT: bold;width:140px;" />
+					<p:password required="true"
+						requiredMessage="Confirmar la Contraseña "
+						value="#{controladorBienvenida.contrasenia2}" feedback="true"
+						promptLabel="Por favor Ingrese la contraseña" weakLabel="Débil"
+						goodLabel="Buena" strongLabel="Fuerte" />
+				</h:panelGrid>
+				<p:separator />
+				<p:commandButton value="Cambiar Contraseña"
+					title="Cambiar Contraseña"
+					actionListener="#{controladorBienvenida.cambiarContrasenia()}"
+					icon="ui-icon-key" />
+			</p:dialog>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

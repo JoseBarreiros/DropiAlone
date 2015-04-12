@@ -1,0 +1,129 @@
+package ec.org.cropestalert.entities;
+
+import java.io.Serializable;
+
+import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import java.util.List;
+
+
+/**
+ * The persistent class for the location database table.
+ * 
+ */
+@XmlRootElement
+@Entity
+@NamedQuery(name="Location.findAll", query="SELECT l FROM Location l")
+public class Location implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_location")
+	private int idLocation;
+
+	@Column(name="location_humidity")
+	private byte locationHumidity;
+
+	@Column(name="location_latitude")
+	private double locationLatitude;
+
+	@Column(name="location_longitude")
+	private double locationLongitude;
+
+	@Column(name="location_pressure")
+	private double locationPressure;
+
+	@Column(name="location_temperature")
+	private double locationTemperature;
+
+	@Column(name="location_wind_speed")
+	private double locationWindSpeed;
+
+	//bi-directional many-to-one association to Photo
+	@OneToMany(mappedBy="location")
+	private List<Photo> photos;
+
+	public Location() {
+	}
+
+	public int getIdLocation() {
+		return this.idLocation;
+	}
+
+	public void setIdLocation(int idLocation) {
+		this.idLocation = idLocation;
+	}
+
+	public byte getLocationHumidity() {
+		return this.locationHumidity;
+	}
+
+	public void setLocationHumidity(byte locationHumidity) {
+		this.locationHumidity = locationHumidity;
+	}
+
+	public double getLocationLatitude() {
+		return this.locationLatitude;
+	}
+
+	public void setLocationLatitude(double locationLatitude) {
+		this.locationLatitude = locationLatitude;
+	}
+
+	public double getLocationLongitude() {
+		return this.locationLongitude;
+	}
+
+	public void setLocationLongitude(double locationLongitude) {
+		this.locationLongitude = locationLongitude;
+	}
+
+	public double getLocationPressure() {
+		return this.locationPressure;
+	}
+
+	public void setLocationPressure(double locationPressure) {
+		this.locationPressure = locationPressure;
+	}
+
+	public double getLocationTemperature() {
+		return this.locationTemperature;
+	}
+
+	public void setLocationTemperature(double locationTemperature) {
+		this.locationTemperature = locationTemperature;
+	}
+
+	public double getLocationWindSpeed() {
+		return this.locationWindSpeed;
+	}
+
+	public void setLocationWindSpeed(double locationWindSpeed) {
+		this.locationWindSpeed = locationWindSpeed;
+	}
+
+	public List<Photo> getPhotos() {
+		return this.photos;
+	}
+
+	public void setPhotos(List<Photo> photos) {
+		this.photos = photos;
+	}
+
+	public Photo addPhoto(Photo photo) {
+		getPhotos().add(photo);
+		photo.setLocation(this);
+
+		return photo;
+	}
+
+	public Photo removePhoto(Photo photo) {
+		getPhotos().remove(photo);
+		photo.setLocation(null);
+
+		return photo;
+	}
+
+}

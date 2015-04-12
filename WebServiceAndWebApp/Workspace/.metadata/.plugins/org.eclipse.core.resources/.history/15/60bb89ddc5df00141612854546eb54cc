@@ -1,0 +1,110 @@
+package ec.org.cropestalert.entities;
+
+import java.io.Serializable;
+import javax.persistence.*;
+import java.util.List;
+
+
+/**
+ * The persistent class for the pest database table.
+ * 
+ */
+@Entity
+@NamedQuery(name="Pest.findAll", query="SELECT p FROM Pest p")
+public class Pest implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_pest")
+	private int idPest;
+
+	@Lob
+	@Column(name="pest_name")
+	private String pestName;
+
+	//bi-directional many-to-one association to Photo
+	@ManyToOne
+	@JoinColumn(name="pest_id_photo")
+	private Photo photo;
+
+	//bi-directional many-to-one association to PestHasPesticide
+	@OneToMany(mappedBy="pest")
+	private List<PestHasPesticide> pestHasPesticides;
+
+	//bi-directional many-to-one association to PestValoration
+	@OneToMany(mappedBy="pest")
+	private List<PestValoration> pestValorations;
+
+	public Pest() {
+	}
+
+	public int getIdPest() {
+		return this.idPest;
+	}
+
+	public void setIdPest(int idPest) {
+		this.idPest = idPest;
+	}
+
+	public String getPestName() {
+		return this.pestName;
+	}
+
+	public void setPestName(String pestName) {
+		this.pestName = pestName;
+	}
+
+	public Photo getPhoto() {
+		return this.photo;
+	}
+
+	public void setPhoto(Photo photo) {
+		this.photo = photo;
+	}
+
+	public List<PestHasPesticide> getPestHasPesticides() {
+		return this.pestHasPesticides;
+	}
+
+	public void setPestHasPesticides(List<PestHasPesticide> pestHasPesticides) {
+		this.pestHasPesticides = pestHasPesticides;
+	}
+
+	public PestHasPesticide addPestHasPesticide(PestHasPesticide pestHasPesticide) {
+		getPestHasPesticides().add(pestHasPesticide);
+		pestHasPesticide.setPest(this);
+
+		return pestHasPesticide;
+	}
+
+	public PestHasPesticide removePestHasPesticide(PestHasPesticide pestHasPesticide) {
+		getPestHasPesticides().remove(pestHasPesticide);
+		pestHasPesticide.setPest(null);
+
+		return pestHasPesticide;
+	}
+
+	public List<PestValoration> getPestValorations() {
+		return this.pestValorations;
+	}
+
+	public void setPestValorations(List<PestValoration> pestValorations) {
+		this.pestValorations = pestValorations;
+	}
+
+	public PestValoration addPestValoration(PestValoration pestValoration) {
+		getPestValorations().add(pestValoration);
+		pestValoration.setPest(this);
+
+		return pestValoration;
+	}
+
+	public PestValoration removePestValoration(PestValoration pestValoration) {
+		getPestValorations().remove(pestValoration);
+		pestValoration.setPest(null);
+
+		return pestValoration;
+	}
+
+}

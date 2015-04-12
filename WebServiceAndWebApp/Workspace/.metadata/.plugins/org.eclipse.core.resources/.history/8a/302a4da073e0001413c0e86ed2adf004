@@ -1,0 +1,38 @@
+package ec.org.alone.services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.ejb.Stateless;
+import javax.persistence.Query;
+
+import ec.org.cropestalert.auxentity.PhotoAux;
+import ec.org.cropestalert.entities.Photo;
+
+@Stateless
+public class PhotoService extends Generic<Photo> {
+
+	public PhotoService() {
+		super(Photo.class, PhotoService.class);
+		// TODO Auto-generated constructor stub
+	}
+
+	public List<Photo> findAllOrderedByDateOriginal() {
+		System.out.println("sigue entrando");
+		Query q = em
+				.createQuery("SELECT a FROM Photo a ORDER BY a.photoCurrentDate DESC");
+		return q.getResultList();
+	}
+
+	public List<PhotoAux> findAllOrderedByDate() {
+		System.out.println("volvio a entrar");
+		List<PhotoAux> photos = new ArrayList<PhotoAux>();
+		for (Photo photo : findAllOrderedByDateOriginal()) {
+			PhotoAux photoAux = new PhotoAux(photo.getIdPhoto(),
+					photo.getPhotoCropDescription(), photo.getPhotoCropName(),
+					photo.getPhotoCurrentDate(), "http://192.168.56.1:8081/WebServiceCropPest/images/"+photo.getPhotoName());
+			photos.add(photoAux);
+		}
+		return photos;
+	}
+}

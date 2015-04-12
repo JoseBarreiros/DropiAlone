@@ -1,0 +1,5 @@
+package ec.org.cropestalert.services;
+
+public class PestHasPesticideService {
+
+}

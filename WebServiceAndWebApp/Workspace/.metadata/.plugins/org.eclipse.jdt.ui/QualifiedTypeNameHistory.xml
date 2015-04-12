@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javax.xml.bind.annotation.XmlRootElement"/>
+<fullyQualifiedTypeName name="ec.org.cropestalert.entities.Location"/>
+<fullyQualifiedTypeName name="ec.org.cropestalert.services.LocationService"/>
+<fullyQualifiedTypeName name="javax.ejb.Stateless"/>
+<fullyQualifiedTypeName name="ec.org.cropestalert.services.PestHasPesticideService"/>
+<fullyQualifiedTypeName name="ec.org.cropestalert.entities.Pesticide"/>
+<fullyQualifiedTypeName name="ec.org.cropestalert.services.PesticideService"/>
+<fullyQualifiedTypeName name="ec.org.cropestalert.entities.PesticideValoration"/>
+<fullyQualifiedTypeName name="ec.org.cropestalert.entities.PestValoration"/>
+<fullyQualifiedTypeName name="ec.org.cropestalert.services.PesticideValorationService"/>
+<fullyQualifiedTypeName name="ec.org.cropestalert.services.Generic"/>
+<fullyQualifiedTypeName name="ec.org.cropestalert.services.PhotoService"/>
+<fullyQualifiedTypeName name="ec.org.cropestalert.entities.Photo"/>
+<fullyQualifiedTypeName name="ec.org.cropestalert.entities.Pest"/>
+<fullyQualifiedTypeName name="ec.org.cropestalert.services.PestService"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="javax.persistence.Query"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="ec.org.cropestalert.auxentity.PhotoAux"/>
+<fullyQualifiedTypeName name="ec.org.cropestalert.entities.PestHasPesticide"/>
+</qualifiedTypeNameHistroy>

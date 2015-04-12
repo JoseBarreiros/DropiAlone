@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="Entidades">
+		<jta-data-source>java:/Libros</jta-data-source>
+		<class>ec.org.cropestalert.entities.PesticideValoration</class>
+		<class>ec.org.cropestalert.entities.Location</class>
+		<class>ec.org.cropestalert.entities.Pest</class>
+		<class>ec.org.cropestalert.entities.PestHasPesticide</class>
+		<class>ec.org.cropestalert.entities.PestValoration</class>
+		<class>ec.org.cropestalert.entities.Pesticide</class>
+		<class>ec.org.cropestalert.entities.Photo</class>
+		<properties>
+
+
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+
+		</properties>
+	</persistence-unit>
+</persistence>

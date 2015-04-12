@@ -1,0 +1,57 @@
+package model;
+
+import java.io.Serializable;
+import javax.persistence.*;
+
+
+/**
+ * The persistent class for the pest_valoration database table.
+ * 
+ */
+@Entity
+@Table(name="pest_valoration")
+@NamedQuery(name="PestValoration.findAll", query="SELECT p FROM PestValoration p")
+public class PestValoration implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_valoration")
+	private int idValoration;
+
+	@Column(name="pest_valoration_value")
+	private byte pestValorationValue;
+
+	//bi-directional many-to-one association to Pest
+	@ManyToOne
+	@JoinColumn(name="pest_valoration_id_pest")
+	private Pest pest;
+
+	public PestValoration() {
+	}
+
+	public int getIdValoration() {
+		return this.idValoration;
+	}
+
+	public void setIdValoration(int idValoration) {
+		this.idValoration = idValoration;
+	}
+
+	public byte getPestValorationValue() {
+		return this.pestValorationValue;
+	}
+
+	public void setPestValorationValue(byte pestValorationValue) {
+		this.pestValorationValue = pestValorationValue;
+	}
+
+	public Pest getPest() {
+		return this.pest;
+	}
+
+	public void setPest(Pest pest) {
+		this.pest = pest;
+	}
+
+}

@@ -1,0 +1,12 @@
+package ec.org.cropestalert.services;
+
+import ec.org.cropestalert.entities.Location;
+
+public class LocationService extends Generic<Location> {
+
+	public LocationService() {
+		super(Location.class, LocationService.class);
+		// TODO Auto-generated constructor stub
+	}
+
+}

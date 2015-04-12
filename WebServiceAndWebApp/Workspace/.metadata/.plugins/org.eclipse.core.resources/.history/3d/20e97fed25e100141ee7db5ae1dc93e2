@@ -1,0 +1,40 @@
+package ec.org.alone.services;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import javax.ejb.Stateless;
+import javax.persistence.Query;
+
+import ec.org.alone.entities.Photo;
+
+@Stateless
+public class PhotoService extends Generic<Photo> {
+
+	public PhotoService() {
+		super(Photo.class, PhotoService.class);
+		// TODO Auto-generated constructor stub
+	}
+
+	public List<Photo> findAllOrderedByDateOriginal() {
+		Query q = em
+				.createQuery("SELECT a FROM Photo a ORDER BY a.photoUploadDate DESC");
+		return q.getResultList();
+	}
+
+	public List<Photo> buscarPorNombre(String nombre) {
+		Query q = em
+				.createQuery("SELECT a FROM Photo a WHERE a.photoPlantName LIKE :nombre ORDER BY a.photoUploadDate DESC");
+		q.setParameter("nombre", nombre);
+		return q.getResultList();
+	}
+
+	public List<Photo> buscarPorZona(String zona) {
+		Query q = em
+				.createQuery("SELECT a FROM Photo a WHERE a.photoZone LIKE :zona");
+		q.setParameter("zona", zona);
+		return q.getResultList();
+	}
+
+}

@@ -1,0 +1,12 @@
+package ec.org.cropestalert.services;
+
+import ec.org.cropestalert.entities.PestValoration;
+
+public class PestValorationService extends Generic<PestValoration> {
+
+	public PestValorationService() {
+		super(tipoBean, tipoServicio);
+		// TODO Auto-generated constructor stub
+	}
+
+}

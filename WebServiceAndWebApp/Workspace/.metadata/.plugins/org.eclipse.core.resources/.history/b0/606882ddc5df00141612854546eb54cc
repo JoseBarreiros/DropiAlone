@@ -1,0 +1,55 @@
+package ec.org.cropestalert.entities;
+
+import java.io.Serializable;
+import javax.persistence.*;
+
+
+/**
+ * The persistent class for the pest_has_pesticide database table.
+ * 
+ */
+@Entity
+@Table(name="pest_has_pesticide")
+@NamedQuery(name="PestHasPesticide.findAll", query="SELECT p FROM PestHasPesticide p")
+public class PestHasPesticide implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@EmbeddedId
+	private PestHasPesticidePK id;
+
+	//bi-directional many-to-one association to Pest
+	@ManyToOne
+	private Pest pest;
+
+	//bi-directional many-to-one association to Pesticide
+	@ManyToOne
+	private Pesticide pesticide;
+
+	public PestHasPesticide() {
+	}
+
+	public PestHasPesticidePK getId() {
+		return this.id;
+	}
+
+	public void setId(PestHasPesticidePK id) {
+		this.id = id;
+	}
+
+	public Pest getPest() {
+		return this.pest;
+	}
+
+	public void setPest(Pest pest) {
+		this.pest = pest;
+	}
+
+	public Pesticide getPesticide() {
+		return this.pesticide;
+	}
+
+	public void setPesticide(Pesticide pesticide) {
+		this.pesticide = pesticide;
+	}
+
+}

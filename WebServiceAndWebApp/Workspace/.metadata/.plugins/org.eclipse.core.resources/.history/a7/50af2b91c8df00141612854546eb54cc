@@ -1,0 +1,134 @@
+package ec.org.cropestalert.entities;
+
+import java.io.Serializable;
+
+import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
+
+import java.util.Date;
+import java.util.List;
+
+/**
+ * The persistent class for the photo database table.
+ * 
+ */
+@XmlRootElement
+@Entity
+@NamedQuery(name = "Photo.findAll", query = "SELECT p FROM Photo p")
+public class Photo implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_photo")
+	private int idPhoto;
+
+	@Lob
+	@Column(name = "photo_crop_description")
+	private String photoCropDescription;
+
+	@Lob
+	@Column(name = "photo_crop_name")
+	private String photoCropName;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name = "photo_current_date")
+	private Date photoCurrentDate;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name = "photo_end_day_crop")
+	private Date photoEndDayCrop;
+
+	@Lob
+	@Column(name = "photo_name")
+	private String photoName;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name = "photo_start_day_crop")
+	private Date photoStartDayCrop;
+
+	// bi-directional many-to-one association to Pest
+	@OneToMany(mappedBy = "photo")
+	private List<Pest> pests;
+
+	// bi-directional many-to-one association to Location
+	@ManyToOne
+	@JoinColumn(name = "photo_id_location")
+	private Location location;
+
+	public Photo() {
+	}
+
+	public int getIdPhoto() {
+		return this.idPhoto;
+	}
+
+	public void setIdPhoto(int idPhoto) {
+		this.idPhoto = idPhoto;
+	}
+
+	public String getPhotoCropDescription() {
+		return this.photoCropDescription;
+	}
+
+	public void setPhotoCropDescription(String photoCropDescription) {
+		this.photoCropDescription = photoCropDescription;
+	}
+
+	public String getPhotoCropName() {
+		return this.photoCropName;
+	}
+
+	public void setPhotoCropName(String photoCropName) {
+		this.photoCropName = photoCropName;
+	}
+
+	public Date getPhotoCurrentDate() {
+		return this.photoCurrentDate;
+	}
+
+	public void setPhotoCurrentDate(Date photoCurrentDate) {
+		this.photoCurrentDate = photoCurrentDate;
+	}
+
+	public Date getPhotoEndDayCrop() {
+		return this.photoEndDayCrop;
+	}
+
+	public void setPhotoEndDayCrop(Date photoEndDayCrop) {
+		this.photoEndDayCrop = photoEndDayCrop;
+	}
+
+	public String getPhotoName() {
+		return this.photoName;
+	}
+
+	public void setPhotoName(String photoName) {
+		this.photoName = photoName;
+	}
+
+	public Date getPhotoStartDayCrop() {
+		return this.photoStartDayCrop;
+	}
+
+	public void setPhotoStartDayCrop(Date photoStartDayCrop) {
+		this.photoStartDayCrop = photoStartDayCrop;
+	}
+
+	public List<Pest> getPests() {
+		return this.pests;
+	}
+
+	public void setPests(List<Pest> pests) {
+		this.pests = pests;
+	}
+
+	public Location getLocation() {
+		return this.location;
+	}
+
+	public void setLocation(Location location) {
+		this.location = location;
+	}
+
+}

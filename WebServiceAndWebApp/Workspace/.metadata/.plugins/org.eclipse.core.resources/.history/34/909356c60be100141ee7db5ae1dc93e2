@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+<ui:composition template="/templates/templateProDual.xhtml">
+	<ui:define name="tituloPagina">AgileScrum</ui:define>
+	<ui:define name="menuPagina">
+		<h:form style="padding: 3px;">
+
+			<h:commandLink styleClass="more" action="#" process="@this"
+				immediate="true">
+							Gestión de Usuarios							
+						</h:commandLink>
+
+			<h:commandLink styleClass="more" action="#" process="@this"
+				immediate="true">
+							Gestión de Proyectos							
+						</h:commandLink>
+		</h:form>
+	</ui:define>
+	<ui:define name="contenido">
+		<h:form id="formPrincipal">
+			<p:growl autoUpdate="true" showDetail="false" />
+
+			<p:gmap id="gmap" center="-8.783195,-55.491477" zoom="3"
+				type="HYBRID" model="#{controladorMapaGeneral.advancedModel}"
+				style="width:100%;height:400px">
+
+				<p:ajax event="overlaySelect"
+					listener="#{controladorMapaGeneral.onMarkerSelect}" />
+
+				<p:gmapInfoWindow id="infoWindow">
+					<h:panelGrid columns="2" style="display: block; margin: auto">
+
+						<img
+							src="/WebServAlone/images/#{controladorMapaGeneral.marker.data}"
+							alt="HC-CONSULTORES" id="logoPrincipal"
+							style="height: 150px; margin: 5px; float: left;" />
+						<h:panelGrid>
+							<h:outputText value="#{controladorMapaGeneral.marker.title}" />
+						</h:panelGrid>
+
+
+					</h:panelGrid>
+				</p:gmapInfoWindow>
+			</p:gmap>
+			<p:separator />
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

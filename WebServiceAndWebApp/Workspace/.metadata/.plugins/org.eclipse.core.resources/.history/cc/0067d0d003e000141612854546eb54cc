@@ -1,0 +1,12 @@
+package ec.org.cropestalert.services;
+
+import ec.org.cropestalert.entities.Pest;
+
+public class PestService extends Generic<Pest> {
+
+	public PestService() {
+		super(Pest.class, PestService.class);
+		// TODO Auto-generated constructor stub
+	}
+
+}

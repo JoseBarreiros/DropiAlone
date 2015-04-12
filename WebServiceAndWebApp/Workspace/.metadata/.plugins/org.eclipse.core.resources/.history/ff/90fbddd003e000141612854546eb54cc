@@ -1,0 +1,12 @@
+package ec.org.cropestalert.services;
+
+import ec.org.cropestalert.entities.PesticideValoration;
+
+public class PesticideValorationService extends Generic<PesticideValoration> {
+
+	public PesticideValorationService() {
+		super(PesticideValoration.class, PesticideValorationService.class);
+		// TODO Auto-generated constructor stub
+	}
+
+}

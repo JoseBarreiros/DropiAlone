@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+<ui:composition template="/templates/templateProDual.xhtml">
+	<ui:define name="tituloPagina">AgileScrum</ui:define>
+	<ui:define name="contenido">
+		<h:form id="formPrincipal">
+			<p:growl autoUpdate="true" showDetail="false" />
+
+			<h:panelGrid columns="2">
+				<p:commandButton value="Mostrar Todos"
+					action="#{controladorMapaGeneral.buscarTodos()}" update="gmap"
+					icon="ui-icon-search" />
+				<h:outputLabel value="" />
+				<p:selectOneMenu value="#{controladorMapaGeneral.zonaSeleccionada}">
+					<f:selectItem itemLabel="Urbana" itemValue="Urbana" />
+					<f:selectItem itemLabel="Rural" itemValue="Rural" />
+				</p:selectOneMenu>
+				<p:commandButton value="Buscar por Zona"
+					action="#{controladorMapaGeneral.buscarPorZona()}" update="gmap"
+					icon="ui-icon-search" />
+
+				<p:calendar value="#{controladorMapaGeneral.fechaInicio}"
+					navigator="true">
+					<pe:keyFilter regEx="/[]/i" />
+				</p:calendar>
+				<p:calendar value="#{controladorMapaGeneral.fechaFin}"
+					navigator="true">
+					<pe:keyFilter regEx="/[]/i" />
+				</p:calendar>
+				<p:commandButton value="Buscar por Fecha"
+					action="#{controladorMapaGeneral.buscarPorFechas()}" update="gmap"
+					icon="ui-icon-search" />
+			</h:panelGrid>
+
+			<p:gmap id="gmap" center="-8.783195,-55.491477" zoom="3"
+				type="HYBRID" model="#{controladorMapaGeneral.advancedModel}"
+				style="width:100%;height:400px">
+
+				<p:ajax event="overlaySelect"
+					listener="#{controladorMapaGeneral.onMarkerSelect}" />
+
+				<p:gmapInfoWindow id="infoWindow">
+					<h:panelGrid columns="2" style="display: block; margin: auto">
+
+						<img
+							src="/WebServAlone/images/#{controladorMapaGeneral.marker.data}"
+							alt="HC-CONSULTORES" id="logoPrincipal"
+							style="height: 150px; margin: 5px; float: left;" />
+						<h:outputText value="#{controladorMapaGeneral.marker.title}"
+							escape="false" />
+					</h:panelGrid>
+				</p:gmapInfoWindow>
+			</p:gmap>
+			<p:separator />
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

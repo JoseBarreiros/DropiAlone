@@ -1,0 +1,5 @@
+package ec.org.cropestalert.entities;
+
+public class PestValoration {
+
+}

@@ -1,0 +1,56 @@
+package ec.org.cropestalert.entities;
+
+import java.io.Serializable;
+import javax.persistence.*;
+
+/**
+ * The persistent class for the pest_valoration database table.
+ * 
+ */
+@Entity
+@Table(name = "pesticide_valoration")
+@NamedQuery(name = "PesticideValoration.findAll", query = "SELECT p FROM PesticideValoration p")
+public class PesticideValoration implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_pesticide_valoration")
+	private int idPesticideValoration;
+
+	@Column(name = "pesticide_valoratio_value")
+	private byte pesticideValorationValue;
+
+	// bi-directional many-to-one association to Pest
+	@ManyToOne
+	@JoinColumn(name = "pesticide_id_pest_has_pesticide")
+	private PestHasPesticide pestHasPesticide;
+
+	public PestValoration() {
+	}
+
+	public int getIdValoration() {
+		return this.idValoration;
+	}
+
+	public void setIdValoration(int idValoration) {
+		this.idValoration = idValoration;
+	}
+
+	public byte getPestValorationValue() {
+		return this.pestValorationValue;
+	}
+
+	public void setPestValorationValue(byte pestValorationValue) {
+		this.pestValorationValue = pestValorationValue;
+	}
+
+	public Pest getPest() {
+		return this.pest;
+	}
+
+	public void setPest(Pest pest) {
+		this.pest = pest;
+	}
+
+}

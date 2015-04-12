@@ -1,0 +1,68 @@
+package model;
+
+import java.io.Serializable;
+import javax.persistence.*;
+
+/**
+ * The primary key class for the pest_has_pesticide database table.
+ * 
+ */
+@Embeddable
+public class PestHasPesticidePK implements Serializable {
+	//default serial version id, required for serializable classes.
+	private static final long serialVersionUID = 1L;
+
+	@Column(name="pest_id_pest", insertable=false, updatable=false)
+	private int pestIdPest;
+
+	@Column(name="pesticide_id_pesticide", insertable=false, updatable=false)
+	private int pesticideIdPesticide;
+
+	@Column(name="id_pest_has_pesticide")
+	private int idPestHasPesticide;
+
+	public PestHasPesticidePK() {
+	}
+	public int getPestIdPest() {
+		return this.pestIdPest;
+	}
+	public void setPestIdPest(int pestIdPest) {
+		this.pestIdPest = pestIdPest;
+	}
+	public int getPesticideIdPesticide() {
+		return this.pesticideIdPesticide;
+	}
+	public void setPesticideIdPesticide(int pesticideIdPesticide) {
+		this.pesticideIdPesticide = pesticideIdPesticide;
+	}
+	public int getIdPestHasPesticide() {
+		return this.idPestHasPesticide;
+	}
+	public void setIdPestHasPesticide(int idPestHasPesticide) {
+		this.idPestHasPesticide = idPestHasPesticide;
+	}
+
+	public boolean equals(Object other) {
+		if (this == other) {
+			return true;
+		}
+		if (!(other instanceof PestHasPesticidePK)) {
+			return false;
+		}
+		PestHasPesticidePK castOther = (PestHasPesticidePK)other;
+		return 
+			(this.pestIdPest == castOther.pestIdPest)
+			&& (this.pesticideIdPesticide == castOther.pesticideIdPesticide)
+			&& (this.idPestHasPesticide == castOther.idPestHasPesticide);
+	}
+
+	public int hashCode() {
+		final int prime = 31;
+		int hash = 17;
+		hash = hash * prime + this.pestIdPest;
+		hash = hash * prime + this.pesticideIdPesticide;
+		hash = hash * prime + this.idPestHasPesticide;
+		
+		return hash;
+	}
+}

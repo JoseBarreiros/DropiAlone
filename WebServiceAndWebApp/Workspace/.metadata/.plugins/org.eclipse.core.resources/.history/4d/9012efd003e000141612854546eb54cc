@@ -1,0 +1,12 @@
+package ec.org.cropestalert.services;
+
+import ec.org.cropestalert.entities.PestHasPesticide;
+
+public class PestHasPesticideService extends Generic<PestHasPesticide> {
+
+	public PestHasPesticideService() {
+		super(PestHasPesticide.class, PestHasPesticideService.class);
+		// TODO Auto-generated constructor stub
+	}
+
+}

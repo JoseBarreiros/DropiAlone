@@ -1,0 +1,4 @@
+com.android.ide.eclipse.adt.fixLegacyEditors=1
+com.android.ide.eclipse.adt.sdk=C\:\\eclipse-jee-luna-SR1a-win32-x86_64\\eclipse\\androidsdk
+com.android.ide.eclipse.adt.xmlEditor=true
+eclipse.preferences.version=1

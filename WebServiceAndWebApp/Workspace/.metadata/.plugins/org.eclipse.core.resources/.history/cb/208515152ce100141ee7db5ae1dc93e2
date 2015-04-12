@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+<ui:composition template="/templates/templateProDual.xhtml">
+	<ui:define name="tituloPagina">AgileScrum</ui:define>
+	<ui:define name="contenido">
+		<h:form id="formPrincipal">
+			<p:growl autoUpdate="true" showDetail="false" />
+
+			<h:panelGrid columns="1">
+				<p:commandButton value="Mostrar Todos"
+					action="#{controladorMapaGeneral.buscarTodos()}"
+					update="gmap dtlFotos" icon="ui-icon-search" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="2">
+				<p:selectOneMenu value="#{controladorMapaGeneral.zonaSeleccionada}">
+					<f:selectItem itemLabel="Urbana" itemValue="Urbana" />
+					<f:selectItem itemLabel="Rural" itemValue="Rural" />
+				</p:selectOneMenu>
+				<p:commandButton value="Buscar por Zona"
+					action="#{controladorMapaGeneral.buscarPorZona()}"
+					update="gmap dtlFotos" icon="ui-icon-search" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="2">
+				<p:inputText value="#{controladorMapaGeneral.filtroNombre}" />
+				<p:commandButton value="Buscar por Zona"
+					action="#{controladorMapaGeneral.buscarPorNombre()}"
+					update="gmap dtlFotos" icon="ui-icon-search" />
+			</h:panelGrid>
+
+			<h:panelGrid columns="5">
+				<h:outputLabel value="Desde:" />
+				<p:calendar value="#{controladorMapaGeneral.fechaInicio}"
+					navigator="true">
+					<pe:keyFilter regEx="/[]/i" />
+				</p:calendar>
+				<h:outputLabel value="Hasta:" />
+				<p:calendar value="#{controladorMapaGeneral.fechaFin}"
+					navigator="true">
+					<pe:keyFilter regEx="/[]/i" />
+				</p:calendar>
+				<p:commandButton value="Buscar por Fecha"
+					action="#{controladorMapaGeneral.buscarPorFechas()}"
+					update="gmap dtlFotos" icon="ui-icon-search" />
+			</h:panelGrid>
+
+			<p:gmap id="gmap" center="-8.783195,-55.491477" zoom="3"
+				type="HYBRID" model="#{controladorMapaGeneral.advancedModel}"
+				style="width:100%;height:400px">
+
+				<p:ajax event="overlaySelect"
+					listener="#{controladorMapaGeneral.onMarkerSelect}" />
+
+				<p:gmapInfoWindow id="infoWindow">
+					<h:panelGrid columns="2" style="display: block; margin: auto">
+
+						<img
+							src="/WebServAlone/images/#{controladorMapaGeneral.marker.data}"
+							alt="HC-CONSULTORES" id="logoPrincipal"
+							style="height: 150px; margin: 5px; float: left;" />
+						<h:outputText value="#{controladorMapaGeneral.marker.title}"
+							escape="false" />
+					</h:panelGrid>
+				</p:gmapInfoWindow>
+			</p:gmap>
+			<p:separator />
+			<p:dataTable id="dtlFotos"
+				value="#{controladorMapaGeneral.fotosFiltradas}" var="foto"
+				paginatorPosition="bottom"
+				paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				paginator="true" rows="10" rowsPerPageTemplate="10,20,30"
+				sortMode="multiple" emptyMessage="No existen registros">
+
+				<p:column headerText="Nombre de la planta"
+					sortBy="#{foto.photoPlantName}">
+					<h:outputText value="#{foto.photoPlantName}" />
+				</p:column>
+
+				<p:column headerText="Fecha" sortBy="#{foto.photoUploadDate}">
+					<h:outputText value="#{foto.photoUploadDate}" />
+				</p:column>
+
+				<p:column headerText="Zona" sortBy="#{foto.photoZone}">
+					<h:outputText value="#{foto.photoZone}" />
+				</p:column>
+
+				<p:column headerText="Estado" sortBy="#{foto.photoDrop}">
+					<h:outputText value="#{foto.photoDrop}" />
+				</p:column>
+
+				<p:column headerText="Porcentaje de daño alto">
+					<h:outputText value="#{foto.photoHighLeafDamage}" />
+				</p:column>
+
+				<p:column headerText="Porcentaje de daño bajo">
+					<h:outputText value="#{foto.photoLowLeafDamage}" />
+				</p:column>
+
+				<p:column headerText="Porcentaje total de daño">
+					<h:outputText value="#{foto.photoTotalLeafDamage}" />
+				</p:column>
+
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

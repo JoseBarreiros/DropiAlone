@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+<!-- tags
+tituloPagina  
+menuPagina
+tituloFormulario
+contenido
+ -->
+<h:head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>HC Consultores - <ui:insert name="tituloPagina"></ui:insert></title>
+	<link href="#{request.contextPath}/css/stylesDual.css" rel="stylesheet"
+		type="text/css" />
+	<script src="http://maps.google.com/maps/api/js?sensor=false"
+		type="text/javascript"></script>
+	<h:outputScript name="validador.js"></h:outputScript>
+
+	<script type="text/javascript">
+	PrimeFaces.locales['es'] = {
+	        closeText: 'Cerrar',
+	        prevText: 'Anterior',
+	        nextText: 'Siguiente',
+	        monthNames: ['Enero','Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+	        monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+	        dayNames: ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'],
+	        dayNamesShort: ['Dom','Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+	        dayNamesMin: ['D','L','M','Mi','J','V','S'],
+	        weekHeader: 'Semana',
+	        firstDay: 1,
+	        isRTL: false,
+	        showMonthAfterYear: false,
+	        yearSuffix: '',
+	        timeOnlyTitle: 'Sólo hora',
+	        timeText: 'Tiempo',
+	        hourText: 'Hora',
+	        minuteText: 'Minuto',
+	        secondText: 'Segundo',
+	        currentText: 'Fecha actual',
+	        ampm: false,
+	        month: 'Mes',
+	        week: 'Semana',
+	        day: 'Día',
+	        allDayText : 'Todo el día'
+	};
+
+	
+	</script>
+</h:head>
+
+<h:body>
+
+	<div id="barraTemplate">
+
+		<h1 align="center" id="tituloScrum"
+			style="color: rgb(214, 213, 213); font-size: x-large; position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%);">Leaf
+			me Alone</h1>
+	</div>
+	<center>
+		<div id="content">
+
+			<h2>
+				<ui:insert name="tituloFormulario"></ui:insert>
+			</h2>
+			<ui:insert name="contenido">
+							Aqui va el contenido
+						</ui:insert>
+		</div>
+	</center>
+</h:body>
+</html>

@@ -1,0 +1,67 @@
+package ec.org.cropestalert.auxentity;
+
+import java.util.Date;
+
+public class PhotoAux {
+
+	public PhotoAux() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	private int idPhoto;
+	private String photoCropDescription;
+	private String photoCropName;
+	private Date photoCurrentDate;
+	private Date photoEndDayCrop;
+	private Date photoStartDayCrop;
+
+	public int getIdPhoto() {
+		return idPhoto;
+	}
+
+	public void setIdPhoto(int idPhoto) {
+		this.idPhoto = idPhoto;
+	}
+
+	public String getPhotoCropDescription() {
+		return photoCropDescription;
+	}
+
+	public void setPhotoCropDescription(String photoCropDescription) {
+		this.photoCropDescription = photoCropDescription;
+	}
+
+	public String getPhotoCropName() {
+		return photoCropName;
+	}
+
+	public void setPhotoCropName(String photoCropName) {
+		this.photoCropName = photoCropName;
+	}
+
+	public Date getPhotoCurrentDate() {
+		return photoCurrentDate;
+	}
+
+	public void setPhotoCurrentDate(Date photoCurrentDate) {
+		this.photoCurrentDate = photoCurrentDate;
+	}
+
+	public Date getPhotoEndDayCrop() {
+		return photoEndDayCrop;
+	}
+
+	public void setPhotoEndDayCrop(Date photoEndDayCrop) {
+		this.photoEndDayCrop = photoEndDayCrop;
+	}
+
+	public Date getPhotoStartDayCrop() {
+		return photoStartDayCrop;
+	}
+
+	public void setPhotoStartDayCrop(Date photoStartDayCrop) {
+		this.photoStartDayCrop = photoStartDayCrop;
+	}
+
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pe="http://primefaces.org/ui/extensions">
+
+<ui:composition template="/templates/templateProDual.xhtml">
+	<ui:define name="tituloPagina">AgileScrum</ui:define>
+	<ui:define name="menuPagina">
+		<h:form style="padding: 3px;">
+
+			<h:commandLink styleClass="more" action="#" process="@this"
+				immediate="true">
+							Gestión de Usuarios							
+						</h:commandLink>
+
+			<h:commandLink styleClass="more" action="#" process="@this"
+				immediate="true">
+							Gestión de Proyectos							
+						</h:commandLink>
+
+			<h:commandLink styleClass="more" action="#" process="@this"
+				immediate="true">
+							Scrum Master - Administración							
+						</h:commandLink>
+
+
+			<h:commandLink styleClass="more" action="#" process="@this"
+				immediate="true">
+							Scrum Team - Administración							
+			</h:commandLink>
+
+			<h:commandLink styleClass="more" action="#" process="@this"
+				immediate="true">
+							Product Owner - Product Backlog				
+			</h:commandLink>
+		</h:form>
+	</ui:define>
+	<ui:define name="contenido">
+		<h:form id="formPrincipal">
+			<p:growl autoUpdate="true" showDetail="false" />
+			<h:outputText
+				value="Bienvenid@ #{dataManagerSesion.usuarioSesion.persona.nombrePersona} #{dataManagerSesion.usuarioSesion.persona.apellidoPersona}"
+				style="font-weight: bolder;font-size: 1.8em;" />
+			<p:separator />
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
