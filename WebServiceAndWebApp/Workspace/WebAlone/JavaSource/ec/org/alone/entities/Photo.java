@@ -34,7 +34,7 @@ public class Photo implements Serializable {
 	private double photoNdvi;
 
 	@Column(name = "photo_ozone_percent")
-	private double photoOzonePercent;
+	private int photoOzonePercent;
 
 	@Column(name = "photo_plant_name")
 	private String photoPlantName;
@@ -109,14 +109,6 @@ public class Photo implements Serializable {
 		this.photoNdvi = photoNdvi;
 	}
 
-	public double getPhotoOzonePercent() {
-		return this.photoOzonePercent;
-	}
-
-	public void setPhotoOzonePercent(double photoOzonePercent) {
-		this.photoOzonePercent = photoOzonePercent;
-	}
-
 	public String getPhotoPlantName() {
 		return this.photoPlantName;
 	}
@@ -171,6 +163,14 @@ public class Photo implements Serializable {
 
 	public void setPhotoDrop(String photoDrop) {
 		this.photoDrop = photoDrop;
+	}
+
+	public int getPhotoOzonePercent() {
+		return photoOzonePercent;
+	}
+
+	public void setPhotoOzonePercent(int photoOzonePercent) {
+		this.photoOzonePercent = photoOzonePercent;
 	}
 
 }

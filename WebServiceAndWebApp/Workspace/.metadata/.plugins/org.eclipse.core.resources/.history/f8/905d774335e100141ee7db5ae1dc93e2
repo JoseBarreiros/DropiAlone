@@ -49,14 +49,8 @@ public class RESTService {
 		nombre = "true";
 		System.out.println("insertar1");
 		try {
-			int aux = 1;
-			if (photo.getPhotoDrop().equals("Desprendida")) {
-				aux = 1;
-			} else {
-				aux = 0;
-			}
 			LeafAnalysis analisys = new LeafAnalysis(UPLOADED_FILE_PATH
-					+ photo.getPhotoName(), aux);
+					+ photo.getPhotoName());
 			System.out.println("insertar3");
 			System.out.println(analisys.getHighLeafDamage());
 			System.out.println(analisys.getLowLeafDamage());
@@ -71,7 +65,6 @@ public class RESTService {
 			photo.setPhotoHighLeafDamage(analisys.getHighLeafDamage());
 			photo.setPhotoLowLeafDamage(analisys.getLowLeafDamage());
 			photo.setPhotoTotalLeafDamage(analisys.getTotalLeafDamage());
-			photo.setPhotoOzonePercent(analisys.getOzoneDamageClass());
 
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -87,9 +80,7 @@ public class RESTService {
 				+ "%<br><span><strong>Area con orificios: </strong>"
 				+ photo.getPhotoHighLeafDamage()
 				+ "%<br><span><strong>Porcentaje de falta de clorofila: </strong>"
-				+ photo.getPhotoLowLeafDamage()
-				+ "%<br><span><strong>Clasificación de daño por Ozono: </strong>"
-				+ photo.getPhotoOzonePercent();
+				+ photo.getPhotoLowLeafDamage() + "%";
 	}
 
 	// Delete By Id

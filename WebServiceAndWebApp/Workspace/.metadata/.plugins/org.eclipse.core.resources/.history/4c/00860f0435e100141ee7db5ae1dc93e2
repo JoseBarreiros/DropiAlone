@@ -1,4 +1,4 @@
-package ec.org.alone.analysis;
+package com.expertsystem.analisys;
 
 import java.io.File;
 
@@ -7,80 +7,80 @@ import dk.ange.octave.OctaveEngineFactory;
 import dk.ange.octave.type.OctaveDouble;
 import dk.ange.octave.type.OctaveString;
 
-public class LeafAnalysis {
+public class LeafAnalysis 
+{
 
-	private static File octaveExcecutableProgram = new File(
-			"C:\\Octave\\Octave-3.8.2\\bin\\octave-3.8.2.exe");
+	private static File octaveExcecutableProgram = new File("C:\\Octave\\Octave-3.8.2\\bin\\octave-3.8.2.exe");	
 	private static String octaveScriptFolderPath = "C:\\WorkspaceNASA\\LeafAnalisys\\OctaveScripts";
-
+	
 	private int totalLeafDamage;
 	private int lowLeafDamage;
 	private int highLeafDamage;
 	private int ozoneDamageClass;
-
+	
 	/**
 	 * Empty constructor
 	 */
-	public LeafAnalysis() {
+	public LeafAnalysis()
+	{
 
 	}
-
+	
 	/**
 	 * Constructor that call leafImageAnalysis method.
 	 */
-	public LeafAnalysis(String imagePath, int t) {
+	public LeafAnalysis(String imagePath, int t)
+	{
 		totalLeafDamage = 0;
 		lowLeafDamage = 0;
 		highLeafDamage = 0;
 		ozoneDamageClass = 0;
-
-		leafImageAnalysis(imagePath, t);
+		
+		leafImageAnalysis(imagePath,t);
 	}
-
+	
 	/**
 	 * Method that calls the script image analysis
-	 * 
-	 * @param imageToBeAnalyzed
-	 *            Path of the image to be analyzed
+	 * @param imageToBeAnalyzed Path of the image to be analyzed
 	 */
-	public void leafImageAnalysis(String imageToBeAnalyzed, int t) {
+	public void leafImageAnalysis(String imageToBeAnalyzed, int t) 
+	{		
 		OctaveEngineFactory engineFactory = new OctaveEngineFactory();
 		engineFactory.setOctaveProgram(octaveExcecutableProgram);
-
+		
 		OctaveEngine octaveSession = engineFactory.getScriptEngine();
-
+		
 		// Analysis
-		octaveSession.eval("cd " + octaveScriptFolderPath);
+		octaveSession.eval("cd " + octaveScriptFolderPath);		
 		octaveSession.eval("totalLeafDamage = 0;");
 		octaveSession.eval("lowLeafDamage = 0;");
 		octaveSession.eval("highLeafDamage = 0;");
 		octaveSession.eval("ozoneDamageClass = 0;");
-
-		String expressionToEvaluate = "[totalLeafDamage lowLeafDamage highLeafDamage ozoneDamageClass] = prosimage("
-				+ "'" + imageToBeAnalyzed + "'" + "," + t + ");";
+		
+		String expressionToEvaluate = "[totalLeafDamage lowLeafDamage highLeafDamage ozoneDamageClass] = prosimage(" + "'" + imageToBeAnalyzed + "'" + "," + t + ");";		
 		octaveSession.eval(expressionToEvaluate);
 
-		OctaveDouble octaveTotalLeafDamage = octaveSession.get(
-				OctaveDouble.class, "totalLeafDamage");
-		OctaveDouble octaveLowLeafDamage = octaveSession.get(
-				OctaveDouble.class, "lowLeafDamage");
-		OctaveDouble octaveHighLeafDamage = octaveSession.get(
-				OctaveDouble.class, "highLeafDamage");
-		OctaveDouble octaveOzoneDamageClass = octaveSession.get(
-				OctaveDouble.class, "ozoneDamageClass");
-
+		OctaveDouble octaveTotalLeafDamage = octaveSession.get(OctaveDouble.class, "totalLeafDamage");
+		OctaveDouble octaveLowLeafDamage = octaveSession.get(OctaveDouble.class, "lowLeafDamage");
+		OctaveDouble octaveHighLeafDamage = octaveSession.get(OctaveDouble.class, "highLeafDamage");
+		OctaveDouble octaveOzoneDamageClass = octaveSession.get(OctaveDouble.class, "ozoneDamageClass");
+		
 		totalLeafDamage = (int) octaveTotalLeafDamage.get(1);
 		lowLeafDamage = (int) octaveLowLeafDamage.get(1);
 		highLeafDamage = (int) octaveHighLeafDamage.get(1);
 		ozoneDamageClass = (int) octaveOzoneDamageClass.get(1);
-
-		// octaveSession.eval("exit(0)");
-		try {
+		
+		//octaveSession.eval("exit(0)");
+		try
+		{
 			octaveSession.close();
-		} catch (Exception e) {
-			// e.printStackTrace();
 		}
-
+		catch(Exception e)
+		{
+			//e.printStackTrace();
+		}
+		
+						
 	}
 
 	public int getTotalLeafDamage() {
@@ -115,4 +115,10 @@ public class LeafAnalysis {
 		this.ozoneDamageClass = ozoneDamageClass;
 	}
 
+
+	
+	
+
+	
+	
 }
