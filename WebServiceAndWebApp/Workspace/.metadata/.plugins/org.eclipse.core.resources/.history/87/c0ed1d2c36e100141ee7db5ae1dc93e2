@@ -111,8 +111,8 @@
 				</p:column>
 
 				<p:column headerText="Clasificación de daño por Ozono"
-					sortBy="#{foto.photoOzonePercent}">
-					<h:outputText value="#{foto.photoOzonePercent}" />
+					sortBy="#{foto.photoOzonePercent}%">
+					<h:outputText value="#{foto.photoOzonePercent}%" />
 				</p:column>
 
 			</p:dataTable>

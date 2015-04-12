@@ -100,7 +100,7 @@
 					<h:outputText value="#{foto.photoHighLeafDamage}%" />
 				</p:column>
 
-				<p:column headerText="Porcentaje de falta de clorofila"
+				<p:column headerText="Porcentaje de falta de clorofila:"
 					sortBy="#{foto.photoLowLeafDamage}">
 					<h:outputText value="#{foto.photoLowLeafDamage}%" />
 				</p:column>
@@ -108,11 +108,6 @@
 				<p:column headerText="Porcentaje total de daño"
 					sortBy="#{foto.photoTotalLeafDamage}">
 					<h:outputText value="#{foto.photoTotalLeafDamage}%" />
-				</p:column>
-
-				<p:column headerText="Clasificación de daño por Ozono"
-					sortBy="#{foto.photoOzonePercent}">
-					<h:outputText value="#{foto.photoOzonePercent}" />
 				</p:column>
 
 			</p:dataTable>

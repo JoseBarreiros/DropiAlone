@@ -88,8 +88,8 @@ public class RESTService {
 				+ photo.getPhotoHighLeafDamage()
 				+ "%<br><span><strong>Porcentaje de falta de clorofila: </strong>"
 				+ photo.getPhotoLowLeafDamage()
-				+ "%<br><span><strong>Clasificación de daño por Ozono: </strong>"
-				+ photo.getPhotoOzonePercent();
+				+ "%<br><span><strong>Porcentaje de falta de clorofila: </strong>"
+				+ photo.getPhotoLowLeafDamage() + "%";
 	}
 
 	// Delete By Id
