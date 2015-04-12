@@ -30,7 +30,7 @@
 
 			<h:panelGrid columns="2">
 				<p:inputText value="#{controladorMapaGeneral.filtroNombre}" />
-				<p:commandButton value="Buscar por Zona"
+				<p:commandButton value="Buscar por Nombre"
 					action="#{controladorMapaGeneral.buscarPorNombre()}"
 					update="gmap dtlFotos" icon="ui-icon-search" />
 			</h:panelGrid>
@@ -63,7 +63,7 @@
 
 						<img
 							src="/WebServAlone/images/#{controladorMapaGeneral.marker.data}"
-							alt="HC-CONSULTORES" id="logoPrincipal"
+							id="logoPrincipal"
 							style="height: 150px; margin: 5px; float: left;" />
 						<h:outputText value="#{controladorMapaGeneral.marker.title}"
 							escape="false" />
@@ -112,7 +112,12 @@
 
 				<p:column headerText="Clasificación de daño por Ozono"
 					sortBy="#{foto.photoOzonePercent}">
-					<h:outputText value="#{foto.photoOzonePercent}" />
+					<h:outputText value="Clase #{foto.photoOzonePercent}" />
+				</p:column>
+
+				<p:column headerText="Imagen">
+					<img src="/WebServAlone/images/#{foto.photoName}"
+						style="height: 130px; margin: 5px; float: left;" />
 				</p:column>
 
 			</p:dataTable>
