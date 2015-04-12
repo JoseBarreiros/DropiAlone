@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="zoneCrop">
+        <item>Rural</item>
+        <item>Urbana</item>
+    </string-array>
+
+    <string-array name="dropLeaft">
+        <item>Desprendida</item>
+        <item>No Desprendida</item>
+    </string-array>
+</resources>

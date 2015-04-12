@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="authorities_provider_offline_notes">com.meg7.soas.demo.provider.offlineNotes</string>
+    <string name="hint_name_plant"> Ingresa un nombre unico de la planta; ej: S2031</string>
+
+</resources>

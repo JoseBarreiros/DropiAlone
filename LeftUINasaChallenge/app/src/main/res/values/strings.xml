@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="authorities_provider_offline_notes">com.meg7.soas.provider.offlineNotes</string>
+    <string name="title_activity_upload_photo">UploadPhoto</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="hint_name_plant">Nombre único de la planta; ej: S2031</string>
+
+</resources>
