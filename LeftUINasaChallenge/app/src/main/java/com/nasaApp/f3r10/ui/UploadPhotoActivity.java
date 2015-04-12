@@ -547,12 +547,6 @@ public class UploadPhotoActivity extends BaseActivity {
         //alertDialog.setIcon(R.drawable.tick);
 
         // Setting OK Button
-        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                // Write your code here to execute after dialog closed
-                Toast.makeText(getApplicationContext(), "You clicked on OK", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
 

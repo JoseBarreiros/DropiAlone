@@ -25,6 +25,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
+
+
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -54,7 +56,8 @@
         <activity
             android:name="com.nasaApp.f3r10.ui.UploadPhotoActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.WithDrawer" >
+            android:theme="@style/AppTheme.WithDrawer"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
