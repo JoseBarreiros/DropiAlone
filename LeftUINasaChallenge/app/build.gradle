@@ -28,8 +28,8 @@ android {
         minSdkVersion 14
         targetSdkVersion 21
 
-        applicationId "com.meg7.soas"
-        testApplicationId "com.meg7.soas.tests"
+        applicationId "com.nasaApp.f3r10"
+        testApplicationId "com.nasaApp.f3r10.tests"
 
         versionCode 3
         versionName "1.2"
@@ -41,18 +41,6 @@ android {
     lintOptions {
         checkReleaseBuilds true
         abortOnError false
-    }
-
-    productFlavors {
-        demo {
-            applicationId "com.meg7.soas.demo"
-            versionName "1.2d"
-        }
-
-        full {
-            applicationId "com.meg7.soas"
-            versionName "1.2"
-        }
     }
 
     packagingOptions {
