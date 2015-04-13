@@ -553,6 +553,11 @@ public class UploadPhotoActivity extends BaseActivity {
 
         // Setting Icon to Dialog
         //alertDialog.setIcon(R.drawable.tick);
+		alertDialog.setButton("OK", new DialogInterface.OnClickListener(){
+			public void onClick(DialogInterface dialog, int which){
+				
+			}
+		});
 
         // Setting OK Button
         alertDialog.setButton("OK", new DialogInterface.OnClickListener() {

@@ -11,7 +11,7 @@ public class LeafAnalysis {
 
 	private static File octaveExcecutableProgram = new File(
 			"C:\\Octave\\Octave-3.8.2\\bin\\octave-3.8.2.exe");
-	private static String octaveScriptFolderPath = "C:\\WorkspaceNASA\\LeafAnalisys\\OctaveScripts";
+	private static String octaveScriptFolderPath = "C:\\jboss-as-7.1.1.Final\\jboss-as-7.1.1.Final\\standalone\\deployments\\WebServAlone.war\\utils";
 
 	private int totalLeafDamage;
 	private int lowLeafDamage;
