@@ -92,6 +92,7 @@ public class UploadPhotoActivity extends BaseActivity {
     private String dropLeaft;
 
     private AlertDialog alertDialog;
+    private AlertDialog readmeDialog;
 
 
     private ActionBarDrawerToggle mDrawerToggle;
@@ -184,8 +185,15 @@ public class UploadPhotoActivity extends BaseActivity {
             }
         });
 
+
         alertDialog = new AlertDialog.Builder(UploadPhotoActivity.this).create();
         info();
+
+        readmeDialog = new AlertDialog.Builder(UploadPhotoActivity.this).create();
+        readme();
+
+        readmeDialog.show();
+
     }
 
     @Override
@@ -550,7 +558,32 @@ public class UploadPhotoActivity extends BaseActivity {
         alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 // Write your code here to execute after dialog closed
-               
+
+            }
+        });
+
+
+        // Setting OK Button
+    }
+
+
+    private void readme(){
+        // Setting Dialog Title
+        readmeDialog.setTitle("Guide");
+
+        // Setting Dialog Message
+        readmeDialog.setMessage(
+                "Remember to take the photo with a white background"
+                );
+
+        // Setting Icon to Dialog
+        //alertDialog.setIcon(R.drawable.tick);
+
+        // Setting OK Button
+        readmeDialog.setButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                // Write your code here to execute after dialog closed
+
             }
         });
 
