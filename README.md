@@ -24,8 +24,8 @@ The server needs:
 - Octave 3.8 and libraries (general-1.3.4.tar.gz / control-2.8.0.tar.gz / signal-1.3.1.tar.gz / image-2.2.2.tar.gz)
 
 ##Contributors
-[Fernando Ledesma](https://github.com/f3r10)
-[José Albarado](https://github.com/josepepe91)
-[Jonathan Morocho](https://github.com/jmorocho)
-[Nicolás Magne Tang](https://github.com/nicomagnet)
-[José Barreiros](https://github.com/JoseBarreiros)
+- [Fernando Ledesma](https://github.com/f3r10)
+- [José Albarado](https://github.com/josepepe91)
+- [Jonathan Morocho](https://github.com/jmorocho)
+- [Nicolás Magne Tang](https://github.com/nicomagnet)
+- [José Barreiros](https://github.com/JoseBarreiros)
